@@ -20,6 +20,7 @@ public class BandsRouter {
 	@RouterOperation(beanClass = BandsHandler.class, beanMethod = "getBands")
 	@Bean
 	public RouterFunction<ServerResponse> getBandsRouter(@Autowired BandsHandler bandsHandler) {
-		  return route(GET("/bands"), bandsHandler::getBands);
+		  return route(GET("/bands") 
+				  .and(accept(MediaType.APPLICATION_JSON)), bandsHandler::getBands);
 	}
 }
